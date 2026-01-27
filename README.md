@@ -120,7 +120,7 @@ print(f"已获得 {len(filtered_labels)} 张目标图片。")#看看成功没有
 
 ```
 
-### 开始训练了
+### 开始推理来看模型准确性了
 
 ```python
 import torch
