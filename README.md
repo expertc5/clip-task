@@ -1,27 +1,27 @@
-1. 在anaconda prompt中创建clip_task仓库：
+#1. 在anaconda prompt中创建clip_task仓库：
 conda create -n clip_task python=3.9 -y
 
-2.激活clip_task仓库 准备下载pytorch：
+#2.激活clip_task仓库 准备下载pytorch：
 conda activate clip_task
 
-3.利用镜像网站加速pytorch下载速度：
+#3.利用镜像网站加速pytorch下载速度：
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
 conda config --set show_channel_urls yes
 
-4.下载pytorch(用于训练)和matplotlib(用于最后可视化)库：
+#4.下载pytorch(用于训练)和matplotlib(用于最后可视化)库：
 conda install pytorch torchvision torchaudio cpuonly -c pytorch -y
 conda install matplotlib
 
-5.下载transformer pillow （镜像加速）：
+#5.下载transformer pillow （镜像加速）：
     pip install transformers pillow notebook -i https://pypi.tuna.tsinghua.edu.cn/simple
 
-6.在huggingface上下载clip的核心权重以及配置文件 将其存放在my_clip文件夹
+#6.在huggingface上下载clip的核心权重以及配置文件 将其存放在my_clip文件夹
 
-7.用anaconda prompt启动一个Jupyter用于编译以及训练模型：
+#7.用anaconda prompt启动一个Jupyter用于编译以及训练模型：
 jupyter notebook
 
-8.因为clip是2021年发布的 当时huggingface还没有普及safetensors格式 而现在的            	pytorch又因为安全原因不能够加载.bin文件 所以我编写了一串强制通过的代码
+#8.因为clip是2021年发布的 当时huggingface还没有普及safetensors格式 而现在的pytorch又因为安全原因不能够加载.bin文件 所以我编写了一串强制通过的代码
 from transformers import CLIPModel, CLIPProcessor
 import torch
 local_path = r"D:\my_clip"
@@ -35,11 +35,7 @@ try:
     processor = CLIPProcessor.from_pretrained(local_path)
     print("已完成")
 
-9.自己拿了一张图片先试一试这个模型好不好用，测试图片命名为test.jpg
-  
-
-
-
+#9.自己拿了一张图片先试一试这个模型好不好用，测试图片命名为test.jpg
 
 from PIL import Image
 import torch
@@ -68,7 +64,7 @@ text_prompts = ["a photo of a cat", "a photo of a dog", "a photo of a bird"]
 except FileNotFoundError:
 print("没找到文件")#防止把测试文件放错地方
 
-10.开始加载数据集
+#10.开始加载数据集
 import torch
 from torchvision import datasets, transforms
 
@@ -92,7 +88,7 @@ for img, label in test_set:
 
 print(f"已获得 {len(filtered_labels)} 张目标图片。")#看看成功没有
 
-10.开始训练了 
+#11.开始训练了 
 import torch
 from tqdm import tqdm
 
@@ -118,7 +114,7 @@ for i in tqdm(range(len(filtered_images))):
 print(correct_counts)#输出最后的结果
 
 
-11.画张图看看最后的训练成果(画图不是很会借助了一下ai)
+#12.画张图看看最后的训练成果(画图不是很会借助了一下ai)
 import matplotlib.pyplot as plt
 
 
