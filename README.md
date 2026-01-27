@@ -105,7 +105,7 @@ except FileNotFoundError:
 
 ## 5. 数据集评估 (CIFAR-10)
 
-### 10.开始加载数据集
+### 开始加载数据集
 
 ```python
 import torch
