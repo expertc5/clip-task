@@ -808,4 +808,4 @@ plt.subplots_adjust(left=0.08, right=0.95, top=0.85, bottom=0.15, wspace=0.3)
 plt.show()
 
 ```
-![实验结果可视化](Figure_1.png)
+![实验结果可视化](stage2.png)
